@@ -5,7 +5,7 @@ $(document).ready(function() {
 let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
 
 // Make an AJAX call to Google Script
-function insertValue() {
+function insertValue(event) {
   let data = {};
   let url = '';
 
@@ -23,4 +23,6 @@ function insertValue() {
     method: "GET",
     dataType: "jsonp"
   });
+  window.location.href = '/thanksPage.html'
+  event.preventDefault()
 }
