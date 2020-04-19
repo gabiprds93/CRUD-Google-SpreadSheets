@@ -8,42 +8,42 @@
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="./main.js"></script>
-    
+
     <h1>Formulario de Registro</h1>
     <p>Por favor llenar los siguientes datos</p>
-    <form>
+    <form method="post">
       <label>
         Nombres:
-        <input type="text" id="name" />
+        <input type="text" id="name" required />
       </label>
       <br/>
 
       <label>
         Apellidos:
-        <input type="text" id="lastName" />
+        <input type="text" id="lastName" required />
       </label>
       <br/>
 
       <label>
         DNI:
-        <input type="text" id="dni" />
+        <input type="text" id="dni" pattern="[0-9]*" required />
       </label>
       <br/>
 
       Género:
       <label>
-        <input type="radio" id="female" name="gender" value="Femenino" />
+        <input type="radio" id="female" name="gender" value="Femenino" required />
         Femenino
       </label>
       <label>
-        <input type="radio" id="male" name="gender" value="Masculino" />
+        <input type="radio" id="male" name="gender" value="Masculino" required />
         Masculino
       </label>
       <br/>
 
       <label>
         Seleccionar
-        <select name="options">
+        <select name="options" required>
           <option value="Opción 1">Opción 1</option>
           <option value="Opción 2">Opción 2</option>
           <option value="Opción 3">Opción 3</option>
@@ -51,7 +51,7 @@
       </label>
       <br/>
 
-      <button type="button" onClick="insertValue()">Enviar</button>
+      <button type="submit" onClick="insertValue(event)">Enviar</button>
     </form>
   </body>
 </html>
