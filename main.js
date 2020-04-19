@@ -23,6 +23,6 @@ function insertValue(event) {
     method: "GET",
     dataType: "jsonp"
   });
-  window.location.href = '/thanksPage.html'
+  window.location.href = '/CRUD-Google-SpreadSheets/thanksPage.html'
   event.preventDefault()
 }
