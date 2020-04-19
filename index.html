@@ -6,34 +6,37 @@
   </head>
     
   <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="./main.js"></script>
+    
     <h1>Formulario de Registro</h1>
     <p>Por favor llenar los siguientes datos</p>
     <form>
       <label>
         Nombres:
-        <input type="text" />
+        <input type="text" id="name" />
       </label>
       <br/>
 
       <label>
         Apellidos:
-        <input type="text" />
+        <input type="text" id="lastName" />
       </label>
       <br/>
 
       <label>
         DNI:
-        <input type="text" />
+        <input type="text" id="dni" />
       </label>
       <br/>
 
       Género:
       <label>
-        <input type="radio" name="gender" value="female" />
+        <input type="radio" id="female" name="gender" value="Femenino" />
         Femenino
       </label>
       <label>
-        <input type="radio" name="gender" value="male" />
+        <input type="radio" id="male" name="gender" value="Masculino" />
         Masculino
       </label>
       <br/>
@@ -41,14 +44,14 @@
       <label>
         Seleccionar
         <select name="options">
-          <option value="option1">Opción 1</option>
-          <option value="option2">Opción 2</option>
-          <option value="option3">Opción 3</option>
+          <option value="Opción 1">Opción 1</option>
+          <option value="Opción 2">Opción 2</option>
+          <option value="Opción 3">Opción 3</option>
         </select>
       </label>
       <br/>
 
-      <button type="submit">Enviar</button>
+      <button type="button" onClick="insertValue()">Enviar</button>
     </form>
   </body>
 </html>
