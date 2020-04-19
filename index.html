@@ -11,7 +11,7 @@
 
     <h1>Formulario de Registro</h1>
     <p>Por favor llenar los siguientes datos</p>
-    <form method="post">
+    <form method="post" onsubmit="insertValue()">
       <label>
         Nombres:
         <input type="text" id="name" required />
@@ -51,7 +51,7 @@
       </label>
       <br/>
 
-      <button type="submit" onClick="insertValue(event)">Enviar</button>
+      <button type="submit">Enviar</button>
     </form>
   </body>
 </html>
