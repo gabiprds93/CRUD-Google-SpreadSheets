@@ -11,7 +11,7 @@
 
     <h1>Formulario de Registro</h1>
     <p>Por favor llenar los siguientes datos</p>
-    
+
     <form method="post" onsubmit="insertValue(event)">
       <p>Datos del Apoderado</p>
       <label>
@@ -38,14 +38,56 @@
       </label>
       <br/>
 
-      Género:
+      <p>Datos del Estudiante</p>
       <label>
-        <input type="radio" id="female" name="gender" value="Femenino" required />
-        Femenino
+        Apellido Paterno:
+        <input type="text" id="lastNameStudent" required />
+      </label>
+      <br/>
+
+      <label>
+        Apellido Materno:
+        <input type="text" id="mothersLastNameStudent" required />
+      </label>
+      <br/>
+
+      <label>
+        Nombres:
+        <input type="text" id="nameStudent" required />
+      </label>
+      <br/>
+      
+      <label>
+        DNI:
+        <input type="text" id="dniStudent" pattern="[0-9]{8}" />
+      </label>
+      <br/>
+
+      Sexo:
+      <label>
+        <input type="radio" id="female" name="genderStudent" value="F" required />
+        Mujer
       </label>
       <label>
-        <input type="radio" id="male" name="gender" value="Masculino" required />
-        Masculino
+        <input type="radio" id="male" name="genderStudent" value="M" required />
+        Hombre
+      </label>
+      <br/>
+
+      Grado:
+      <label>
+        <input type="radio" id="4to" name="gradeStudent" value="4" required />
+        4to de Primaria
+      </label>
+      <label>
+        <input type="radio" id="5to" name="gradeStudent" value="5" required />
+        5to de Primaria
+      </label>
+      <br/>
+
+      <label>
+        Sección:
+        <input type="text" id="sectionStudent" pattern="[A-Za-z]{1}" placeholder="Ejemplo: A" />
       </label>
       <br/>
 
