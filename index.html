@@ -11,22 +11,30 @@
 
     <h1>Formulario de Registro</h1>
     <p>Por favor llenar los siguientes datos</p>
+    
     <form method="post" onsubmit="insertValue(event)">
+      <p>Datos del Apoderado</p>
+      <label>
+        Apellido Paterno:
+        <input type="text" id="lastNameTutor" required />
+      </label>
+      <br/>
+
       <label>
         Nombres:
-        <input type="text" id="name" required />
+        <input type="text" id="nameTutor" required />
       </label>
       <br/>
-
-      <label>
-        Apellidos:
-        <input type="text" id="lastName" required />
-      </label>
-      <br/>
-
+      
       <label>
         DNI:
-        <input type="text" id="dni" pattern="[0-9]*" required />
+        <input type="text" id="dniTutor" pattern="[0-9]{8}" required />
+      </label>
+      <br/>
+
+      <label>
+        Número de Celular:
+        <input type="text" id="cellphoneTutor" pattern="[0-9]{9}" required />
       </label>
       <br/>
 

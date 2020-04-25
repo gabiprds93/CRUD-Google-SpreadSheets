@@ -9,13 +9,15 @@ function insertValue(event) {
   let data = {};
   let url = '';
 
-  data.name = $("#name").val();
-  data.lastName = $("#lastName").val();
-  data.dni =	$("#dni").val();
+  data.lastNameTutor = $("#lastNameTutor").val();
+  data.nameTutor = $("#nameTutor").val();
+  data.dniTutor =	$("#dniTutor").val();
+  data.cellphoneTutor =	$("#cellphoneTutor").val();
   data.gender = $('input:radio[name=gender]:checked').val();
   data.selection=	$("select[name=options]").val();
 
-  url = `${script_url}?name=${data.name}&lastName=${data.lastName}&dni=${data.dni}&gender=${data.gender}&selection=${data.selection}&action=insert`;
+  url = `${script_url}?lastNameTutor=${data.lastNameTutor}&nameTutor=${data.nameTutor}&dniTutor=${data.dniTutor}
+    &cellphoneTutor=${data.cellphoneTutor}&gender=${data.gender}&selection=${data.selection}&action=insert`;
   
   jQuery.ajax({
     crossDomain: true,
@@ -23,6 +25,6 @@ function insertValue(event) {
     method: "GET",
     dataType: "jsonp"
   });
-  window.location.href = '/CRUD-Google-SpreadSheets/thanksPage.html'
+  window.location.href = 'thanksPage.html'
   event.preventDefault()
 }
