@@ -7,6 +7,7 @@ $(document).ready(function() {
 let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
 const spreadsheetId = '1CzuQjA9sxFsENY0_ahL6Uf3Lg08NLqueLOvtpS6qqd0';
 const apiKey = 'AIzaSyAisKX0e_9w72XfhRtSIyJA75RvDSTkHgk'; 
+let provinces = getProvinces()
 
 // Make an AJAX call to Google Script
 function insertValue(event) {
@@ -60,6 +61,20 @@ function getDepartments(){
  })
 }
 
+function getProvinces(){
+  range = 'PROVINCIAS!A2:Z200';
+
+  return fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?access_token=${apiKey}&key=${apiKey}`)
+  .then((response) => {
+    return response.json()
+  }).then((data) => {
+    console.log(data.values)
+    return provinces = data.values
+  }).catch(err => {
+    console.log(err);
+ })
+}
+
 function fillDepartments(departments){
   let selectDepartments = document.getElementById("departments");
   if(departments){
@@ -69,5 +84,22 @@ function fillDepartments(departments){
       option.value = item[1];
       selectDepartments.add(option);
     });
+  }
+}
+
+function fillProvinces(){
+  const departmentSelected = $("select[name=departments]").val();
+  let selectProvinces = document.getElementById("provinces");
+
+  selectProvinces.innerHTML = '<option value="">Seleccionar</option>'
+  if(provinces){
+    provinces.forEach(item => {
+      if(item[1] === departmentSelected){
+        let option = document.createElement("option");
+        option.text = item[2];
+        option.value = item[2];
+        selectProvinces.add(option);
+      }
+    })
   }
 }

@@ -93,7 +93,15 @@
 
       <label>
         Departamento del Colegio
-        <select id="departments" name="departments" required>
+        <select id="departments" name="departments" onchange="fillProvinces()" required>
+          <option>Seleccionar</option>
+        </select>
+      </label>
+      <br/>
+
+      <label>
+        Provincia del Colegio
+        <select id="provinces" name="provinces" required>
           <option>Seleccionar</option>
         </select>
       </label>
