@@ -109,7 +109,15 @@
 
       <label>
         Distrito del Colegio
-        <select id="districts" name="districts" required>
+        <select id="districts" name="districts" onchange="fillShools()" required>
+          <option>Seleccionar</option>
+        </select>
+      </label>
+      <br/>
+
+      <label>
+        Nombre del Colegio
+        <select id="schools" name="schools" required>
           <option>Seleccionar</option>
         </select>
       </label>
