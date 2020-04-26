@@ -2,12 +2,14 @@ $(document).ready(function() {
   $("#female").attr('checked', true);
   $("#4to").attr('checked', true);
   fillSelects()
+  getDistricts()
 });
 
 let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
 const spreadsheetId = '1CzuQjA9sxFsENY0_ahL6Uf3Lg08NLqueLOvtpS6qqd0';
 const apiKey = 'AIzaSyAisKX0e_9w72XfhRtSIyJA75RvDSTkHgk'; 
 let provinces = getProvinces()
+let districts
 
 // Make an AJAX call to Google Script
 function insertValue(event) {
@@ -75,6 +77,20 @@ function getProvinces(){
  })
 }
 
+function getDistricts(){
+  range = 'DISTRITOS!A2:Z1800';
+
+  fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?access_token=${apiKey}&key=${apiKey}`)
+  .then((response) => {
+    return response.json()
+  }).then((data) => {
+    console.log(data.values)
+    districts = data.values
+  }).catch(err => {
+    console.log(err);
+ })
+}
+
 function fillDepartments(departments){
   let selectDepartments = document.getElementById("departments");
   if(departments){
@@ -90,8 +106,11 @@ function fillDepartments(departments){
 function fillProvinces(){
   const departmentSelected = $("select[name=departments]").val();
   let selectProvinces = document.getElementById("provinces");
+  let selectDistricts = document.getElementById("districts");
 
   selectProvinces.innerHTML = '<option value="">Seleccionar</option>'
+  selectDistricts.innerHTML = '<option value="">Seleccionar</option>'
+
   if(provinces){
     provinces.forEach(item => {
       if(item[1] === departmentSelected){
@@ -99,6 +118,23 @@ function fillProvinces(){
         option.text = item[2];
         option.value = item[2];
         selectProvinces.add(option);
+      }
+    })
+  }
+}
+
+function fillDistricts(){
+  const provinceSelected = $("select[name=provinces]").val();
+  let selectDistricts = document.getElementById("districts");
+
+  selectDistricts.innerHTML = '<option value="">Seleccionar</option>'
+  if(districts){
+    districts.forEach(item => {
+      if(item[1] === provinceSelected){
+        let option = document.createElement("option");
+        option.text = item[2];
+        option.value = item[2];
+        selectDistricts.add(option);
       }
     })
   }

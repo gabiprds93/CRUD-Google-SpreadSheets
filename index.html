@@ -101,7 +101,15 @@
 
       <label>
         Provincia del Colegio
-        <select id="provinces" name="provinces" required>
+        <select id="provinces" name="provinces" onchange="fillDistricts()" required>
+          <option>Seleccionar</option>
+        </select>
+      </label>
+      <br/>
+
+      <label>
+        Distrito del Colegio
+        <select id="districts" name="districts" required>
           <option>Seleccionar</option>
         </select>
       </label>
