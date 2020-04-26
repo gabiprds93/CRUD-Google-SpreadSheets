@@ -30,12 +30,17 @@ function insertValue(event) {
   data.genderStudent = $('input:radio[name=genderStudent]:checked').val();
   data.gradeStudent = $('input:radio[name=gradeStudent]:checked').val();
   data.sectionStudent = $("#sectionStudent").val();
-  data.selection=	$("select[name=options]").val();
+  data.department =	$("select[name=departments]").val();
+  data.province =	$("select[name=provinces]").val();
+  data.district =	$("select[name=districts]").val();
+  data.school =	$("select[name=schools] option:selected").text();
+  data.schoolId =	$("select[name=schools]").val();
 
   url = `${script_url}?lastNameTutor=${data.lastNameTutor}&nameTutor=${data.nameTutor}&dniTutor=${data.dniTutor}
     &cellphoneTutor=${data.cellphoneTutor}&lastNameStudent=${data.lastNameStudent}&mothersLastNameStudent=${data.mothersLastNameStudent}
     &nameStudent=${data.nameStudent}&dniStudent=${data.dniStudent}&genderStudent=${data.genderStudent}&gradeStudent=${data.gradeStudent}
-    &sectionStudent=${data.sectionStudent}&selection=${data.selection}&action=insert`;
+    &sectionStudent=${data.sectionStudent}&department=${data.department}&province=${data.province}&district=${data.district}
+    &school=${data.school}&schoolId=${data.schoolId}&action=insert`;
   
   jQuery.ajax({
     crossDomain: true,
