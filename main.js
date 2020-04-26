@@ -1,9 +1,12 @@
 $(document).ready(function() {
   $("#female").attr('checked', true);
   $("#4to").attr('checked', true);
+  fillSelects()
 });
 
 let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
+const spreadsheetId = '1CzuQjA9sxFsENY0_ahL6Uf3Lg08NLqueLOvtpS6qqd0';
+const apiKey = 'AIzaSyAisKX0e_9w72XfhRtSIyJA75RvDSTkHgk'; 
 
 // Make an AJAX call to Google Script
 function insertValue(event) {
@@ -37,4 +40,34 @@ function insertValue(event) {
   });
   window.location.href = 'thanksPage.html'
   event.preventDefault()
+}
+
+async function fillSelects(){
+  const departments =  await getDepartments()
+  fillDepartments(departments)
+}
+
+function getDepartments(){
+  range = 'DEPARTAMENTOS!A2:Z100';
+
+  return fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?access_token=${apiKey}&key=${apiKey}`)
+  .then((response) => {
+    return response.json()
+  }).then((data) => {
+    return departments = data.values
+  }).catch(err => {
+    console.log(err);
+ })
+}
+
+function fillDepartments(departments){
+  let selectDepartments = document.getElementById("departments");
+  if(departments){
+    departments.forEach(item => {
+      let option = document.createElement("option");
+      option.text = item[1];
+      option.value = item[1];
+      selectDepartments.add(option);
+    });
+  }
 }
