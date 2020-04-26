@@ -1,17 +1,18 @@
-$(document).ready(function() {
-  $("#female").attr('checked', true);
-  $("#4to").attr('checked', true);
-  fillSelects()
-  getDistricts()
-  getSchools();
-});
-
 let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
 const spreadsheetId = '1CzuQjA9sxFsENY0_ahL6Uf3Lg08NLqueLOvtpS6qqd0';
 const apiKey = 'AIzaSyAisKX0e_9w72XfhRtSIyJA75RvDSTkHgk'; 
-let provinces = getProvinces()
-let districts
+let provinces = [];
+let districts = [];
 let schools = [];
+
+$(document).ready(function() {
+  $("#female").attr('checked', true);
+  $("#4to").attr('checked', true);
+  fillFirstSelect();
+  getProvinces();
+  getDistricts();
+  getSchools();
+});
 
 // Make an AJAX call to Google Script
 function insertValue(event) {
@@ -48,13 +49,13 @@ function insertValue(event) {
     method: "GET",
     dataType: "jsonp"
   });
-  window.location.href = 'thanksPage.html'
-  event.preventDefault()
+  window.location.href = 'thanksPage.html';
+  event.preventDefault();
 }
 
-async function fillSelects(){
-  const departments =  await getDepartments()
-  fillDepartments(departments)
+async function fillFirstSelect(){
+  const departments =  await getDepartments();
+  fillDepartments(departments);
 }
 
 function getDepartments(){
@@ -67,21 +68,20 @@ function getDepartments(){
     return departments = data.values
   }).catch(err => {
     console.log(err);
- })
+  })
 }
 
 function getProvinces(){
   range = 'PROVINCIAS!A2:Z200';
 
-  return fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?access_token=${apiKey}&key=${apiKey}`)
+  fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?access_token=${apiKey}&key=${apiKey}`)
   .then((response) => {
     return response.json()
   }).then((data) => {
-    console.log(data.values)
-    return provinces = data.values
+    provinces = data.values
   }).catch(err => {
     console.log(err);
- })
+  })
 }
 
 function getDistricts(){
@@ -91,11 +91,10 @@ function getDistricts(){
   .then((response) => {
     return response.json()
   }).then((data) => {
-    console.log(data.values)
     districts = data.values
   }).catch(err => {
     console.log(err);
- })
+  })
 }
 
 function getSchools(){
@@ -108,7 +107,7 @@ function getSchools(){
     schools = data.values
   }).catch(err => {
     console.log(err);
- })
+  })
 }
 
 function fillDepartments(departments){
@@ -129,9 +128,9 @@ function fillProvinces(){
   let selectDistricts = document.getElementById("districts");
   let selectSchools = document.getElementById("schools");
 
-  selectProvinces.innerHTML = '<option value="">Seleccionar</option>'
-  selectDistricts.innerHTML = '<option value="">Seleccionar</option>'
-  selectSchools.innerHTML = '<option value="">Seleccionar</option>'
+  selectProvinces.innerHTML = '<option value="">Seleccionar</option>';
+  selectDistricts.innerHTML = '<option value="">Seleccionar</option>';
+  selectSchools.innerHTML = '<option value="">Seleccionar</option>';
 
   if(provinces){
     provinces.forEach(item => {
@@ -150,8 +149,8 @@ function fillDistricts(){
   let selectDistricts = document.getElementById("districts");
   let selectSchools = document.getElementById("schools");
 
-  selectDistricts.innerHTML = '<option value="">Seleccionar</option>'
-  selectSchools.innerHTML = '<option value="">Seleccionar</option>'
+  selectDistricts.innerHTML = '<option value="">Seleccionar</option>';
+  selectSchools.innerHTML = '<option value="">Seleccionar</option>';
 
   if(districts){
     districts.forEach(item => {
@@ -169,7 +168,7 @@ function fillShools(){
   const districtSelected = $("select[name=districts]").val();
   let selectSchools = document.getElementById("schools");
 
-  selectSchools.innerHTML = '<option value="">Seleccionar</option>'
+  selectSchools.innerHTML = '<option value="">Seleccionar</option>';
 
   if(schools){
     schools.forEach(item => {
