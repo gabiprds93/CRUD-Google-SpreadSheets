@@ -1,6 +1,8 @@
 let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
 const spreadsheetId = '1CzuQjA9sxFsENY0_ahL6Uf3Lg08NLqueLOvtpS6qqd0';
 const apiKey = 'AIzaSyAisKX0e_9w72XfhRtSIyJA75RvDSTkHgk'; 
+// const spreadsheetId = '1UthHSuINVMGsgwRyLzqIjaiWLaUeEiwCTc05fqRCpkk';
+// const apiKey = 'AIzaSyDUj78HUsx0wbKDcc814VZA7Y2nPovA1q4'; 
 let provinces = [];
 let districts = [];
 let schools = [];
@@ -49,7 +51,7 @@ function insertValue(event) {
     method: "GET",
     dataType: "jsonp"
   });
-  window.location.href = '/CRUD-Google-SpreadSheets/thanksPage.html';
+  window.location.href = '/thanksPage.html';
   event.preventDefault();
 }
 
@@ -128,9 +130,9 @@ function fillProvinces(){
   let selectDistricts = document.getElementById("districts");
   let selectSchools = document.getElementById("schools");
 
-  selectProvinces.innerHTML = '<option value="">Seleccionar</option>';
-  selectDistricts.innerHTML = '<option value="">Seleccionar</option>';
-  selectSchools.innerHTML = '<option value="">Seleccionar</option>';
+  selectProvinces.innerHTML = '<option value="">Lista desplegable</option>';
+  selectDistricts.innerHTML = '<option value="">Lista desplegable</option>';
+  selectSchools.innerHTML = '<option value="">Lista desplegable</option>';
 
   if(provinces){
     provinces.forEach(item => {
@@ -149,8 +151,8 @@ function fillDistricts(){
   let selectDistricts = document.getElementById("districts");
   let selectSchools = document.getElementById("schools");
 
-  selectDistricts.innerHTML = '<option value="">Seleccionar</option>';
-  selectSchools.innerHTML = '<option value="">Seleccionar</option>';
+  selectDistricts.innerHTML = '<option value="">Lista desplegable</option>';
+  selectSchools.innerHTML = '<option value="">Lista desplegable</option>';
 
   if(districts){
     districts.forEach(item => {
@@ -168,7 +170,7 @@ function fillShools(){
   const districtSelected = $("select[name=districts]").val();
   let selectSchools = document.getElementById("schools");
 
-  selectSchools.innerHTML = '<option value="">Seleccionar</option>';
+  selectSchools.innerHTML = '<option value="">Lista desplegable</option>';
 
   if(schools){
     schools.forEach(item => {
