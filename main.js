@@ -1,8 +1,6 @@
-let script_url = "https://script.google.com/macros/s/AKfycbwb7sMr9uweR-7d2jxzCYvXMtEBYDuwkG7UQiRlExNeKEttgpJg/exec";
-const spreadsheetId = '1CzuQjA9sxFsENY0_ahL6Uf3Lg08NLqueLOvtpS6qqd0';
-const apiKey = 'AIzaSyAisKX0e_9w72XfhRtSIyJA75RvDSTkHgk'; 
-// const spreadsheetId = '1UthHSuINVMGsgwRyLzqIjaiWLaUeEiwCTc05fqRCpkk';
-// const apiKey = 'AIzaSyDUj78HUsx0wbKDcc814VZA7Y2nPovA1q4'; 
+let script_url = "https://script.google.com/macros/s/AKfycbw12eltPpZRNtdcUkfOhrRGMGGP39VHpeIAF6Sh3eyju6113Ap-/exec";
+const spreadsheetId = '1SJZXtfjvG9-73IfoCTIMlqymb1bvcmzW6qrKkIDPf-M';
+const apiKey = 'AIzaSyAWF2QCWU7bF-ZE-as0yH3HGbHQ98M3LKQ';
 let provinces = [];
 let districts = [];
 let schools = [];
